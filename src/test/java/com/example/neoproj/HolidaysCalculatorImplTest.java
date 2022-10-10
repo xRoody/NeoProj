@@ -22,6 +22,6 @@ public class HolidaysCalculatorImplTest {
         Assertions.assertEquals(8, holidaysCalculator.calcWorkDays(LocalDate.of(2022, 2, 14), LocalDate.of(2022, 2, 24)));
         Assertions.assertEquals(4, holidaysCalculator.calcWorkDays(LocalDate.of(2022, 2, 21), LocalDate.of(2022, 2, 25)));
         Assertions.assertEquals(9, holidaysCalculator.calcWorkDays(LocalDate.of(2022, 2, 21), LocalDate.of(2022, 3, 5)));
-        Assertions.assertEquals(5, holidaysCalculator.calcWorkDays(LocalDate.of(2022, 4, 29), LocalDate.of(2022, 5, 6)));
+        Assertions.assertEquals(4, holidaysCalculator.calcWorkDays(LocalDate.of(2022, 4, 29), LocalDate.of(2022, 5, 6)));
     }
 }

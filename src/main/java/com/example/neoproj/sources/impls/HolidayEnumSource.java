@@ -27,7 +27,7 @@ public class HolidayEnumSource implements HolidaySource {
         UNITY_DAY(LocalDate.of(0, 11, 4));
 
 
-        private LocalDate localDate;
+        private final LocalDate localDate;
 
         Holidays(LocalDate localDate) {
             this.localDate = localDate;
@@ -35,10 +35,10 @@ public class HolidayEnumSource implements HolidaySource {
     }
 
     @Override
-    public Set<LocalDate> getAllHolidaysWithoutVacantByMonth(int month) {
+    public Set<LocalDate> getAllHolidaysWithoutVacantByMonthAndYear(int month, int year) {
         Set<LocalDate> dates=new HashSet<>();
         for (Holidays h:Holidays.values()){
-            LocalDate tmp=LocalDate.of(LocalDate.now().getYear(), h.localDate.getMonth(), h.localDate.getDayOfMonth());
+            LocalDate tmp=LocalDate.of(year, h.localDate.getMonth(), h.localDate.getDayOfMonth());
             if (tmp.getMonth().getValue()==month){
                 while (tmp.getDayOfWeek().getValue()==6 || tmp.getDayOfWeek().getValue()==7 || dates.contains(tmp)){
                     tmp=tmp.plusDays(1);

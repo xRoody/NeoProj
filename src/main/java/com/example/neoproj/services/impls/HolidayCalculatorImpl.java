@@ -23,14 +23,14 @@ public class HolidayCalculatorImpl implements HolidaysCalculator {
         else if (end.getDayOfWeek().getValue() == 7) sum++;
         else if (start.getDayOfWeek().getValue() > end.getDayOfWeek().getValue()) sum += 2;
         if (start.getMonth().getValue()==end.getMonth().getValue()){
-            for (LocalDate date: holidaySource.getAllHolidaysWithoutVacantByMonth(start.getMonth().getValue())) {
+            for (LocalDate date: holidaySource.getAllHolidaysWithoutVacantByMonthAndYear(start.getMonth().getValue(), start.getYear())) {
                 if ((date.isAfter(start) && date.isBefore(end)) || date.isEqual(start)) sum++;
             }
         }else {
-            for (LocalDate date: holidaySource.getAllHolidaysWithoutVacantByMonth(start.getMonth().getValue())) {
+            for (LocalDate date: holidaySource.getAllHolidaysWithoutVacantByMonthAndYear(start.getMonth().getValue(), start.getYear())) {
                 if (date.isAfter(start) || date.isEqual(start)) sum++;
             }
-            for (LocalDate date:holidaySource.getAllHolidaysWithoutVacantByMonth(end.getMonth().getValue())){
+            for (LocalDate date:holidaySource.getAllHolidaysWithoutVacantByMonthAndYear(end.getMonth().getValue(), end.getYear())){
                 if (date.isBefore(end)) sum++;
             }
         }
