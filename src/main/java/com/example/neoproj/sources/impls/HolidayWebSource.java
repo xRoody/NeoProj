@@ -18,6 +18,7 @@ import java.io.UncheckedIOException;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
@@ -52,6 +53,19 @@ public class HolidayWebSource implements HolidaySource{
     private static class Node{
         private int month;
         private int year;
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Node node = (Node) o;
+            return month == node.month && year == node.year;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(month, year);
+        }
     }
 
     private final LoadingCache<Node, Set<LocalDate>> cache = Caffeine.newBuilder()
